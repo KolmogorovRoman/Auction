@@ -1,0 +1,54 @@
+﻿@page
+@model Auction.Pages.Lots.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Lots[0].StartCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lots[0].ReserveCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lots[0].Steep)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lots[0].CreationTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Lots) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReserveCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Steep)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationTime)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
